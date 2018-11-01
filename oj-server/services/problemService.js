@@ -64,8 +64,24 @@ const addProblem = function(newProblem){
 	});
 }
 
+const modifyProblem = function(modProblem) {
+
+	return new Promise((resolve, reject) => {
+		// check if the problem already exists
+		problemModel.update({name: modProblem.name}, (err, data) =>{
+			if(!data){
+				reject("Problem doesn't exist");
+			}else {
+					resolve(data);
+			}
+		});
+	});
+
+}
+
 module.exports = {
 	getProblems,
 	getProblem,
-	addProblem
+	addProblem,
+	modifyProblem
 }

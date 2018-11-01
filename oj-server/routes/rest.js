@@ -9,7 +9,7 @@ const nodeRestClient = require('node-rest-client').Client;
 const restClient = new nodeRestClient();
 
 // executor 
-EXECUTOR_SERVER_URL = 'http://localhost:5000/build_and_run';
+EXECUTOR_SERVER_URL = 'http://executor/build_and_run';
 
 restClient.registerMethod('build_and_run', EXECUTOR_SERVER_URL,'POST');
 
@@ -34,6 +34,16 @@ router.post('/problems', jsonParser, (req, res) => {
 			res.status(400).send('No Duplicate Name is Allowed!');
 		});
 });
+
+//modify a problem
+router.put('/problems', jsonParser, (req, res) => {
+	problemService.modifyProblem(req.body)
+		.then(problem => {
+			res.json(problem);
+		}, error => {
+			res.status(400).send('Failed to modify the problem');
+		});
+})
 
 // this build_and _run is requested from oj-client 
 router.post('/build_and_run', jsonParser, (req, res) => {

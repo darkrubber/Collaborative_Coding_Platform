@@ -41,7 +41,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<router-outlet></router-outlet>\n\n"
+module.exports = "<app-navbar></app-navbar>\n<router-outlet></router-outlet>\n\n"
 
 /***/ }),
 
@@ -101,12 +101,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_routes__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app.routes */ "./src/app/app.routes.ts");
 /* harmony import */ var _components_new_problem_new_problem_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/new-problem/new-problem.component */ "./src/app/components/new-problem/new-problem.component.ts");
 /* harmony import */ var _components_editor_editor_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/editor/editor.component */ "./src/app/components/editor/editor.component.ts");
+/* harmony import */ var _components_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/navbar/navbar.component */ "./src/app/components/navbar/navbar.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -127,7 +129,8 @@ var AppModule = /** @class */ (function () {
                 _components_problem_list_problem_list_component__WEBPACK_IMPORTED_MODULE_5__["ProblemListComponent"],
                 _components_problem_detail_problem_detail_component__WEBPACK_IMPORTED_MODULE_6__["ProblemDetailComponent"],
                 _components_new_problem_new_problem_component__WEBPACK_IMPORTED_MODULE_8__["NewProblemComponent"],
-                _components_editor_editor_component__WEBPACK_IMPORTED_MODULE_9__["EditorComponent"]
+                _components_editor_editor_component__WEBPACK_IMPORTED_MODULE_9__["EditorComponent"],
+                _components_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_10__["NavbarComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -206,7 +209,7 @@ module.exports = "@media screen{\n\t#editor{\n\t\theight:600px;\n\t}\n\t.lang-se
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<section>\n\t<header class=\"editor-header\">\n\t\t<div class=\"row\">\n\t\t\t<select class=\"form-control pull-left lang-select\"\n\t\t\tname=\"language\"\n\t\t\t[(ngModel)]=\"language\" (change)=\"setLanguage(language)\">\n\t\t\t\t<option *ngFor=\"let language of languages\" [value]=\"language\">\n\t\t\t\t\t{{language}}\n\t\t\t\t</option>\n\t\t\t</select>\n\n\t\t\t<!--reset button -->\n\t\t\t<!-- Button trigger modal -->\n\t\t\t<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#exampleModal\">\n\t\t\t  Reset\n\t\t\t</button>\n\t\t\t<!-- Modal -->\n\t\t\t<div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n\t\t\t  <div class=\"modal-dialog\" role=\"document\">\n\t\t\t    <div class=\"modal-content\">\n\t\t\t      <div class=\"modal-header\">\n\t\t\t        <h5 class=\"modal-title\" id=\"exampleModalLabel\">Remainder</h5>\n\t\t\t        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n\t\t\t          <span aria-hidden=\"true\">&times;</span>\n\t\t\t        </button>\n\t\t\t      </div>\n\t\t\t      <div class=\"modal-body\">\n\t\t\t        You will lose the current progress in the editor. Are you sure?\n\t\t\t      </div>\n\t\t\t      <div class=\"modal-footer\">\n\t\t\t        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Cancel</button>\n\t\t\t        <button type=\"button\" class=\"btn btn-primary\" (click) = \"resetEditor()\" data-dismiss=\"modal\">Reset</button>\n\t\t\t      </div>\n\t\t\t    </div>\n\t\t\t  </div>\n\t\t\t</div>\n\n\t\t</div>\n\t</header>\n\n\t<div id=\"editor\">\n\t</div><!-- This is the body -->\n\n\t<div>\n\t\t{{output}}\n\t</div>\n\n\t<footer class=\"editor-footer\">\n\t\t<button type=\"button\" class=\"btn btn-success pull-right\"\n\t\t(click)=\"submit()\">Submit Solution</button>\n\t</footer>\n</section>\n"
+module.exports = "<section>\n\t<header class=\"editor-header\">\n\t\t<div class=\"row\">\n\t\t\t<select class=\"form-control pull-left lang-select\"\n\t\t\tname=\"language\"\n\t\t\t[(ngModel)]=\"language\" (change)=\"setLanguage(language)\">\n\t\t\t\t<option *ngFor=\"let language of languages\" [value]=\"language\">\n\t\t\t\t\t{{language}}\n\t\t\t\t</option>\n\t\t\t</select>\n\n\t\t\t<!--reset button -->\n\t\t\t<!-- Button trigger modal -->\n\t\t\t<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#exampleModal\">\n\t\t\t  Reset\n\t\t\t</button>\n\t\t\t<!-- Modal -->\n\t\t\t<div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n\t\t\t  <div class=\"modal-dialog\" role=\"document\">\n\t\t\t    <div class=\"modal-content\">\n\t\t\t      <div class=\"modal-header\">\n\t\t\t        <h5 class=\"modal-title\" id=\"exampleModalLabel\">Remainder</h5>\n\t\t\t        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n\t\t\t          <span aria-hidden=\"true\">&times;</span>\n\t\t\t        </button>\n\t\t\t      </div>\n\t\t\t      <div class=\"modal-body\">\n\t\t\t        You will lose the current progress in the editor. Are you sure?\n\t\t\t      </div>\n\t\t\t      <div class=\"modal-footer\">\n\t\t\t        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Cancel</button>\n\t\t\t        <button type=\"button\" class=\"btn btn-primary\" (click) = \"resetEditor()\" data-dismiss=\"modal\">Reset</button>\n\t\t\t      </div>\n\t\t\t    </div>\n\t\t\t  </div>\n\t\t\t</div>\n\n\t\t</div>\n\t</header>\n\n\t<div id=\"editor\">\n\t</div><!-- This is the body -->\n\n\t<div>\n\t\t{{output}}\n\t</div>\n\t<div>\n\t\t{{users}}\n\t</div>\n\n\t<footer class=\"editor-footer\">\n\t\t<button type=\"button\" class=\"btn btn-success pull-right\"\n\t\t(click)=\"submit()\">Submit Solution</button>\n\t</footer>\n</section>\n"
 
 /***/ }),
 
@@ -242,12 +245,14 @@ var EditorComponent = /** @class */ (function () {
         this.collaboration = collaboration;
         this.route = route;
         this.dataService = dataService;
-        this.languages = ['Java', 'Python'];
+        this.languages = ['Java', 'Python', 'C++'];
         this.language = 'Java';
         this.output = '';
+        this.users = '';
         this.defaultContent = {
             'Java': "public class Example {\n\t\t\tpublic static void main(String[] args){\n\t\t\t\t// Type your Java code here\n\t\t\t}\n\t\t}",
-            'Python': "class Solution:\n\t\t\tdef example():\n\t\t\t\t# write your Python code here"
+            'Python': "class Solution:\n\t\t\tdef example():\n\t\t\t\t# write your Python code here",
+            'C++': "int main()\n    {\n      //Type your C++ code here\n      return 0;\n    }"
         }; //`` to write multi-line comments
     }
     //injection (can be created here instead but bad coding)
@@ -269,7 +274,8 @@ var EditorComponent = /** @class */ (function () {
         this.resetEditor();
         document.getElementsByTagName('textarea')[0].focus();
         // set up collaboration socket
-        this.collaboration.init(this.editor, this.sessionId);
+        this.collaboration.init(this.editor, this.sessionId)
+            .subscribe(function (users) { return _this.users = users; });
         this.editor.lastAppliedChange = null;
         //register change callback
         this.editor.on('change', function (e) {
@@ -310,6 +316,69 @@ var EditorComponent = /** @class */ (function () {
             _services_data_service__WEBPACK_IMPORTED_MODULE_3__["DataService"]])
     ], EditorComponent);
     return EditorComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/navbar/navbar.component.css":
+/*!********************************************************!*\
+  !*** ./src/app/components/navbar/navbar.component.css ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbmF2YmFyL25hdmJhci5jb21wb25lbnQuY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/components/navbar/navbar.component.html":
+/*!*********************************************************!*\
+  !*** ./src/app/components/navbar/navbar.component.html ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\n  <a class=\"navbar-brand\" href=\"#\">Leung'sCode</a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <ul class=\"navbar-nav mr-auto\">\n      <li class=\"nav-item active\">\n        <a class=\"nav-link\" href=\"#\">Home <span class=\"sr-only\">(current)</span></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"#\">Link</a>\n      </li>\n      <li class=\"nav-item dropdown\">\n        <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n          Problems\n        </a>\n        <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\n          <a class=\"dropdown-item\" href=\"#\">Easy</a>\n          <a class=\"dropdown-item\" href=\"#\">Medium</a>\n          <a class=\"dropdown-item\" href=\"#\">Hard</a>\n          <div class=\"dropdown-divider\"></div>\n          <a class=\"dropdown-item\" href=\"#\">Something else here</a>\n        </div>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link disabled\" href=\"#\">Disabled</a>\n      </li>\n    </ul>\n    <form class=\"form-inline my-2 my-lg-0\">\n      <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\n      <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>\n    </form>\n  </div>\n</nav>"
+
+/***/ }),
+
+/***/ "./src/app/components/navbar/navbar.component.ts":
+/*!*******************************************************!*\
+  !*** ./src/app/components/navbar/navbar.component.ts ***!
+  \*******************************************************/
+/*! exports provided: NavbarComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NavbarComponent", function() { return NavbarComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var NavbarComponent = /** @class */ (function () {
+    function NavbarComponent() {
+    }
+    NavbarComponent.prototype.ngOnInit = function () {
+    };
+    NavbarComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-navbar',
+            template: __webpack_require__(/*! ./navbar.component.html */ "./src/app/components/navbar/navbar.component.html"),
+            styles: [__webpack_require__(/*! ./navbar.component.css */ "./src/app/components/navbar/navbar.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], NavbarComponent);
+    return NavbarComponent;
 }());
 
 
@@ -590,6 +659,7 @@ var ProblemListComponent = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CollaborationService", function() { return CollaborationService; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -600,10 +670,13 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var CollaborationService = /** @class */ (function () {
     function CollaborationService() {
+        this._userSource = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
     }
     CollaborationService.prototype.init = function (editor, sessionId) {
+        var _this = this;
         //est. socket connection
         this.collaborationSocket = io(window.location.origin, { query: 'sessionId=' + sessionId });
         // receive change from server and apply it to local browser
@@ -617,6 +690,12 @@ var CollaborationService = /** @class */ (function () {
         // this.collaborationSocket.on('message', (message) => {
         // 	console.log('message received from server:' + message);
         // });
+        // add for displaying users
+        this.collaborationSocket.on('userChange', function (data) {
+            console.log('collaboration users change: ' + data);
+            _this._userSource.next(data.toString());
+        });
+        return this._userSource.asObservable();
     };
     //send to server and distribute to others
     CollaborationService.prototype.change = function (delta) {

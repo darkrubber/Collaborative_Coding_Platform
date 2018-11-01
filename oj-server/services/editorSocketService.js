@@ -22,6 +22,11 @@ module.exports = function(io){
 		// add redis
 		if (sessionId in collaborations){
 			collaborations[sessionId]['participants'].push(socket.id);
+
+			let participants = collaborations[sessionId]['participants'];
+			for( i=0; i< participants.length; i++){
+				io.to(participants[i]).emit('userChange', participants);
+			}
 		} else {
 			redisClient.get(sessionPath + sessionId, (data) => {
 
@@ -41,6 +46,11 @@ module.exports = function(io){
 				}
 				//given a problem id, indicate all participants
 				collaborations[sessionId]['participants'].push(socket.id);
+
+				let participants = collaborations[sessionId]['participants'];
+				for( i=0; i< participants.length; i++){
+					io.to(participants[i]).emit('userChange', participants);
+				}
 				// get all particioants of the current session
 				console.log(collaborations[sessionId]['participants']);
 			});
@@ -116,6 +126,11 @@ module.exports = function(io){
 						redisClient.expire(key, TIMEOUT_IN_SECONDS);
 						delete collaborations[sessionId];
 					}
+				}
+
+
+				for( i=0; i< participants.length; i++){
+					io.to(participants[i]).emit('userChange', participants);
 				}
 			}
 			if(!found){

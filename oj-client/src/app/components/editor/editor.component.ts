@@ -13,9 +13,10 @@ declare var ace: any;
 export class EditorComponent implements OnInit {
 	editor: any;
   sessionId: string;
-	public languages: string[] = ['Java', 'Python'];
+	public languages: string[] = ['Java', 'Python', 'C++'];
 	language: string = 'Java';
   output: string = '';
+  users: string = '';
 
 	defaultContent = {
 		'Java': `public class Example {
@@ -25,7 +26,13 @@ export class EditorComponent implements OnInit {
 		}`,
 		'Python': `class Solution:
 			def example():
-				# write your Python code here`
+				# write your Python code here`,
+    'C++': `int main()
+    {
+      //Type your C++ code here
+      return 0;
+    }`
+    
 	}; //`` to write multi-line comments
 
   constructor(private collaboration: CollaborationService, 
@@ -53,12 +60,14 @@ export class EditorComponent implements OnInit {
     document.getElementsByTagName('textarea')[0].focus();
 
     // set up collaboration socket
-    this.collaboration.init(this.editor, this.sessionId);  
+    this.collaboration.init(this.editor, this.sessionId)
+      .subscribe(users => this.users = users);
+
     this.editor.lastAppliedChange = null;
 
     //register change callback
     this.editor.on('change', (e) => {
-      console.log('editor changes:' +JSON.stringify(e));
+      console.log('editor changes:' + JSON.stringify(e));
 
       //interact with server here
       //if the change is initiated from the current session, send to the server

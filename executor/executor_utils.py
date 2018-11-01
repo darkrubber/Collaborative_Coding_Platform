@@ -17,22 +17,26 @@ CONTAINER_NAME = "%s:latest" % IMAGE_NAME
 
 SOURCE_FILE_NAMES = {
 	"java" : "Example.java",
-	"python": " example.py"
+	"python": " example.py",
+	"c++": "example.cpp"
 }
 
 BINARY_NAMES = {
 	"java" : "Example",
-	"python": " example.py"
+	"python": " example.py",
+	"c++": "./a.out"
 }
 
 BUILD_COMMANDS = {
 	"java": "javac",
-	"python": "python3"
+	"python": "python3",
+	"c++": "g++"
 }
 
 EXECUTE_COMMANDS = {
 	"java":"java",
-	"python": "python3"
+	"python": "python3",
+	"c++" : ""
 }
 
 def load_image():
@@ -59,7 +63,6 @@ def build_and_run(code, lang):
 	source_file_parent_dir_name = uuid.uuid4()
 	source_file_host_dir = "%s/%s" % (TEMP_BUILD_DIR, source_file_parent_dir_name)
 	source_file_guest_dir = "/test/%s" % (source_file_parent_dir_name)
-	print("see2!")
 
 	make_dir(source_file_host_dir)
 

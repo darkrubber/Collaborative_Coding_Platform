@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 
 declare var io: any;
 
@@ -7,10 +9,11 @@ declare var io: any;
 })
 export class CollaborationService {
 	collaborationSocket: any;
+  private _userSource = new Subject<string>();
 
   constructor() { }
 
-  init(editor: any, sessionId: string): void{
+  init(editor: any, sessionId: string): Observable<string>{
   	//est. socket connection
   	this.collaborationSocket = io(window.location.origin, { query: 'sessionId='+ sessionId});
   	// receive change from server and apply it to local browser
@@ -25,6 +28,14 @@ export class CollaborationService {
   	// this.collaborationSocket.on('message', (message) => {
   	// 	console.log('message received from server:' + message);
   	// });
+
+    // add for displaying users
+    this.collaborationSocket.on('userChange', (data: string[])=> {
+      console.log('collaboration users change: ' + data);
+      this._userSource.next(data.toString());
+    });
+    return this._userSource.asObservable();
+
   }
 
   //send to server and distribute to others
